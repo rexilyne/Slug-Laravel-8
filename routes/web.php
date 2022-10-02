@@ -16,3 +16,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::controller(PostController::class)->group(function() {
+    Route::post('/post', 'store');
+    Route::get('/post', 'store');
+});
