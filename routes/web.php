@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,7 +18,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(PostController::class)->group(function() {
-    Route::post('/post', 'store');
-    Route::get('/post', 'store');
+Route::post('/', function() {
+    Post::create(['title' => request('title')]);
+    return redirect()->back();
 });
